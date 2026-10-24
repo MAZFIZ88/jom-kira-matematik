@@ -1,0 +1,11 @@
+JOM KIRA! VERSI 5
+
+1. Dalam repositori GitHub, buka index.html.
+2. Tekan ikon pensel (Edit) atau padam fail lama dan muat naik index.html versi ini.
+3. Cara mudah: muat naik semua fail dalam folder ini ke root repositori, gantikan fail lama.
+4. Pastikan index.html berada terus di root bersama manifest.json dan sw.js.
+5. Tunggu GitHub Pages selesai membina laman, kemudian buka https://mazfiz88.github.io/jom-kira-matematik/ dan muat semula.
+
+Perubahan Versi 5: setiap jawapan betul membuka mini-permainan interaktif. Murid perlu menekan MAIN SEKARANG tiga kali untuk menyelesaikan cabaran sebelum boleh ke soalan seterusnya.
+
+Nota: ini masih prototaip. Integrasi Supabase memerlukan konfigurasi berasingan dan tidak diaktifkan secara automatik.
