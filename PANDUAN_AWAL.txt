@@ -1,0 +1,38 @@
+PANDUAN AKTIFKAN AKAUN & AWAN JOM KIRA! V4
+==========================================
+
+A. CIPTA PROJEK SUPABASE
+1. Buka https://supabase.com dan daftar/log masuk.
+2. Cipta projek baharu. Simpan kata laluan pangkalan data di tempat selamat.
+3. Dalam dashboard projek, buka SQL Editor.
+4. Buka fail supabase_schema.sql, salin semua kandungan dan jalankan (Run).
+5. Buka Project Settings / API (atau bahagian API Keys). Salin Project URL dan anon/publishable key sahaja. Jangan gunakan service_role/secret key.
+
+B. SAMBUNG APLIKASI
+1. Hoskan folder aplikasi di HTTPS (contohnya hosting statik). Aplikasi boleh diuji dengan membuka index.html, tetapi ciri PWA memerlukan HTTPS.
+2. Buka Jom Kira! Versi 4.
+3. Masukkan Project URL dan anon/publishable key, tekan Simpan konfigurasi.
+4. Daftar akaun menggunakan e-mel dan kata laluan sekurang-kurangnya 8 aksara. Jika pengesahan e-mel diaktifkan, sahkan e-mel dahulu.
+5. Log masuk dan tekan Segerakkan rekod untuk menghantar/menarik rekod.
+
+C. TETAPKAN AKAUN GURU
+1. Daftar akaun guru seperti biasa dan log masuk sekurang-kurangnya sekali supaya profil diwujudkan.
+2. Dalam Supabase SQL Editor, jalankan arahan berikut dengan e-mel akaun guru yang tepat:
+
+update public.profiles
+set role = 'teacher'
+where id = (select id from auth.users where email = 'guru@sekolah.edu.my');
+
+3. Log keluar dan log masuk semula akaun guru. Akaun guru boleh membaca rekod semua akaun dalam jadual awan. Papan pemuka dalam prototaip ini belum mempunyai pengurusan kelas atau paparan nama profil lanjutan.
+
+D. KESELAMATAN & PRIVASI
+- Jangan kongsi service_role key; ia boleh memintas polisi keselamatan.
+- Jangan gunakan nama penuh atau maklumat peribadi murid jika tidak perlu. Gunakan nama panggilan/kod murid dan ikut dasar privasi sekolah/penjaga.
+- Tetapkan polisi privasi dan pengesahan e-mel sebelum penggunaan sebenar.
+- Uji dengan beberapa akaun contoh sebelum digunakan dalam kelas.
+- Projek Supabase/hosting belum dicipta atau dikonfigurasi bagi pihak anda; akaun dan tetapan ini perlu dibuat oleh pemilik projek.
+
+E. JIKA ADA RALAT
+- Semak URL/key, internet, jadual dan polisi RLS.
+- Pastikan supabase_schema.sql dijalankan tanpa ralat.
+- Jika pendaftaran tidak terus melog masuk, semak e-mel pengesahan.
