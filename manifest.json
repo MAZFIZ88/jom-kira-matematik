@@ -1,0 +1,10 @@
+{
+  "name": "Jom Kira! Matematik Tahun 2",
+  "short_name": "Jom Kira",
+  "description": "Portal permainan Matematik Tahun 2 dengan papan pemuka guru",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f2f7fc",
+  "theme_color": "#102f50",
+  "icons": []
+}
