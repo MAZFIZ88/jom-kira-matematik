@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#102f50"><meta name="description" content="Jom Kira! Versi 3 — portal Matematik Tahun 2 dengan papan pemuka guru.">
+<link rel="manifest" href="manifest.json"><title>Jom Kira! — Versi 4</title>
+<style>
+:root{--navy:#102f50;--blue:#176db0;--cyan:#35b7c8;--gold:#ffd166;--ink:#18334d;--muted:#637b91;--line:#dbe7f0;--bg:#f2f7fc;--green:#17875b;--red:#c33e50}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 8% 0,#dff5ff 0,transparent 33%),linear-gradient(145deg,#f3f8ff,#fff9ed);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink)}
+header{background:linear-gradient(115deg,#102f50,#176db0 65%,#28a9b8);color:#fff;padding:22px 15px 27px;border-radius:0 0 28px 28px;box-shadow:0 10px 25px #102f5017}.wrap{max-width:1160px;margin:auto;padding:0 14px}.brand{display:flex;gap:14px;align-items:center}.brandicon{width:60px;height:60px;border-radius:19px;background:white;color:var(--blue);display:grid;place-items:center;font-size:34px;box-shadow:0 5px 15px #001b3333}h1{font-size:clamp(27px,4vw,40px);line-height:1.05;margin:0}header p{margin:7px 0 0;color:#e5f6ff}.badge{display:inline-block;margin-top:12px;padding:6px 11px;border:1px solid #ffffff5c;background:#ffffff1a;border-radius:99px;font-size:12px}
+main{max-width:1160px;margin:18px auto 35px;padding:0 14px}.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;margin-bottom:15px;box-shadow:0 8px 25px #173d5d0b}h2{font-size:20px;margin:0 0 13px}.row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}.field label{display:block;font-size:13px;font-weight:800;margin-bottom:6px}.field input,.field select{width:100%;padding:11px 12px;border:1px solid #c8d8e6;border-radius:11px;background:white;font:inherit;color:var(--ink)}button{font:inherit;font-weight:800;border:0;border-radius:11px;padding:10px 13px;cursor:pointer;transition:transform .12s,filter .12s}button:hover{filter:brightness(.97);transform:translateY(-1px)}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #35b7c877;outline-offset:2px}.primary{background:var(--blue);color:white}.soft{background:#e7f3ff;color:#14558b}.gold{background:var(--gold);color:#5f4700}.neutral{background:#edf2f7;color:#334e68}.danger{background:#fff0f1;color:#a92f3e}.hidden{display:none!important}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}.stat{background:#eff7ff;border-radius:14px;padding:12px}.stat strong{display:block;color:var(--blue);font-size:23px}.stat span{font-size:12px;color:var(--muted)}.muted{font-size:13px;color:var(--muted);line-height:1.5}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.tab{background:#edf3f8;color:#3b5872}.tab.active{background:var(--navy);color:#fff}
+.games{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:12px}.game{position:relative;overflow:hidden;text-align:left;background:white;border:1px solid #d9e7f2;border-radius:17px;padding:14px;min-height:145px;color:var(--ink)}.game:after{content:"";position:absolute;right:-38px;top:-40px;width:95px;height:95px;border-radius:50%;background:#35b7c812}.game.active{border:2px solid var(--blue);background:#f3faff}.emoji{display:block;font-size:33px;margin-bottom:6px}.game strong{display:block}.game small{display:block;margin-top:5px;color:var(--muted);line-height:1.35}.tag{display:inline-block;background:#eaf6ff;color:#1769aa;border-radius:99px;padding:4px 8px;font-size:11px;margin-top:8px}
+#playCard{display:none}.qbox{background:linear-gradient(135deg,#f0f9ff,#fffaf0);border:1px solid #dceaf6;border-radius:17px;padding:17px;text-align:center}.meta{font-size:12px;color:#5b7892;font-weight:900}.qtext{font-size:clamp(24px,5vw,35px);font-weight:950;margin:14px 0;color:var(--navy)}.answers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;max-width:650px;margin:15px auto 0}.answer{background:#fff;border:2px solid #d7e4ef;color:#173b5d;font-size:19px;min-height:54px}.answer.correct{background:#dcf8e9;border-color:var(--green)}.answer.wrong{background:#ffeaec;border-color:var(--red)}.feedback{min-height:27px;margin:12px 0 0;font-weight:850}.stage{margin-top:13px;padding:17px;border-radius:17px;background:linear-gradient(135deg,#102f50,#18527b);color:white;text-align:center}.art{font-size:47px;min-height:57px}.stagetext{font-weight:800;margin-top:6px}.track{height:10px;background:#ffffff35;border-radius:99px;overflow:hidden;margin-top:14px}.track div{height:100%;background:linear-gradient(90deg,#35b7c8,#ffd166);width:0;transition:width .3s}.bounce{animation:bounce .45s ease}@keyframes bounce{50%{transform:translateY(-13px)}}.records{display:grid;gap:7px}.record{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:10px;border-radius:11px;background:#f4f8fc;font-size:13px}.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;min-width:620px;font-size:13px}th,td{text-align:left;padding:10px;border-bottom:1px solid #e3ebf2}th{background:#edf6ff;color:#204e74}td.num{text-align:right;font-variant-numeric:tabular-nums}.empty{padding:20px;text-align:center;background:#f5f9fc;border-radius:12px;color:var(--muted)}.callout{padding:12px;border-radius:12px;background:#f0f7ff;color:#285675;font-size:13px}.statusgood{color:var(--green);font-weight:800}.statusbad{color:var(--red);font-weight:800}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
+@media(max-width:560px){.stats{grid-template-columns:repeat(2,1fr)}.stat strong{font-size:20px}.answers{gap:7px}.answer{font-size:17px;padding:8px 5px}.game{min-height:135px}}
+</style></head>
+<body>
+<header><div class="wrap"><div class="brand"><div class="brandicon">🧮</div><div><h1>Jom Kira!</h1><p>Portal Pembelajaran Matematik Tahun 2</p></div></div><span class="badge">Versi 4 · Akaun & Penyegerakan Awan</span></div></header>
+<main>
+<section class="card">
+<div class="row"><h2>👋 Persediaan sesi</h2><button id="installBtn" class="soft hidden">＋ Pasang aplikasi</button></div>
+<div class="grid">
+<div class="field"><label for="mode">Mod</label><select id="mode"><option>Individu</option><option>Kelas / Kumpulan</option></select></div>
+<div class="field"><label for="player">Nama murid / kumpulan</label><input id="player" maxlength="60" placeholder="Contoh: Aina / Kumpulan Merah"></div>
+<div class="field"><label for="topic">Topik Matematik</label><select id="topic"><option value="campuran">Campuran</option><option value="nombor">Nombor</option><option value="tambah">Tambah</option><option value="tolak">Tolak</option><option value="darab">Darab</option><option value="bahagi">Bahagi</option><option value="pecahan">Pecahan</option><option value="wang">Wang</option><option value="masa">Masa dan waktu</option><option value="ukuran">Ukuran</option><option value="bentuk">Bentuk dan ruang</option></select></div>
+<div class="field"><label for="level">Tahap soalan</label><select id="level"><option value="mudah">Mudah</option><option value="sederhana">Sederhana</option></select></div>
+</div>
+<div class="stats"><div class="stat"><strong id="score">0</strong><span>Jumlah mata</span></div><div class="stat"><strong id="stars">0 ⭐</strong><span>Bintang</span></div><div class="stat"><strong id="answered">0</strong><span>Soalan dijawab</span></div><div class="stat"><strong id="best">—</strong><span>Skor terbaik</span></div></div>
+<p class="muted">Rekod disimpan dalam pelayar pada peranti ini. Eksport CSV boleh digunakan untuk analisis lanjut guru.</p>
+</section>
+<section class="card"><div class="row"><h2>🎮 Pilih permainan</h2><span class="muted">Jawab dahulu untuk memperoleh mata</span></div><div class="games" id="games"></div></section>
+<section class="card" id="playCard">
+<div class="row"><h2 id="playTitle">Permainan</h2><button id="back" class="neutral">← Senarai permainan</button></div>
+<div class="qbox"><div class="meta" id="qMeta"></div><div class="qtext" id="qText"></div><div class="answers" id="answers"></div><div id="feedback" class="feedback" aria-live="polite"></div></div>
+<div class="stage"><div class="art" id="art">🎳</div><div class="stagetext" id="stageText">Jawab soalan dengan betul untuk menggerakkan permainan.</div><div class="track"><div id="bar"></div></div></div>
+<div class="row" style="margin-top:12px"><span class="muted" id="roundInfo">Mata pusingan: 0</span><button id="next" class="primary hidden">Soalan seterusnya →</button></div>
+</section>
+<section class="card" id="cloudCard">
+<div class="row"><h2>☁️ Akaun & penyegerakan awan</h2><span id="cloudStatus" class="muted">Belum disambungkan</span></div>
+<p class="muted">Sambungkan projek Supabase anda untuk akaun murid/guru dan rekod merentas peranti. Konfigurasi diperlukan sekali oleh pentadbir.</p>
+<div class="grid">
+<div class="field"><label for="sbUrl">Supabase Project URL</label><input id="sbUrl" type="url" placeholder="https://projek-anda.supabase.co" autocomplete="url"></div>
+<div class="field"><label for="sbKey">Supabase anon / publishable key</label><input id="sbKey" type="password" placeholder="Kunci awam projek (bukan service_role)"></div>
+<div class="field"><label for="authEmail">E-mel akaun</label><input id="authEmail" type="email" placeholder="nama@sekolah.edu.my" autocomplete="email"></div>
+<div class="field"><label for="authPassword">Kata laluan</label><input id="authPassword" type="password" minlength="8" placeholder="Sekurang-kurangnya 8 aksara" autocomplete="current-password"></div>
+</div>
+<div class="row" style="margin-top:12px"><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="soft" id="saveCloudConfig">Simpan konfigurasi</button><button class="primary" id="signIn">Log masuk</button><button class="gold" id="signUp">Daftar akaun</button><button class="neutral hidden" id="syncCloud">Segerakkan rekod</button><button class="danger hidden" id="signOut">Log keluar</button></div><span id="accountInfo" class="muted"></span></div>
+<div class="callout" style="margin-top:12px"><b>Privasi:</b> gunakan kunci <i>anon/publishable</i> sahaja dalam aplikasi. Jangan masukkan <i>service_role key</i>. Akaun guru perlu diberikan peranan guru melalui SQL pentadbir yang disertakan.</div>
+</section>
+<section class="card">
+<div class="tabs"><button class="tab active" data-tab="student">🏅 Rekod terkini</button><button class="tab" data-tab="teacher">👩‍🏫 Papan pemuka guru</button></div>
+<div id="studentTab"><div class="row"><h2>Rekod permainan</h2><div><button id="export" class="soft">Eksport CSV</button> <button id="clear" class="danger">Padam semua</button></div></div><div id="records" class="records" style="margin-top:12px"></div></div>
+<div id="teacherTab" class="hidden">
+<h2>Ringkasan pencapaian</h2>
+<div class="grid" style="margin-bottom:14px">
+<div class="field"><label for="filterName">Tapis nama murid/kumpulan</label><input id="filterName" placeholder="Taip nama untuk menapis"></div>
+<div class="field"><label for="filterTopic">Tapis topik</label><select id="filterTopic"><option value="">Semua topik</option><option>Campuran</option><option>Nombor</option><option>Tambah</option><option>Tolak</option><option>Darab</option><option>Bahagi</option><option>Pecahan</option><option>Wang</option><option>Masa dan waktu</option><option>Ukuran</option><option>Bentuk dan ruang</option></select></div>
+</div>
+<div id="teacherSummary" class="grid" style="margin-bottom:14px"></div>
+<div class="tablewrap" id="teacherTable"></div>
+<p class="muted">Papan pemuka ini membaca rekod pada peranti semasa sahaja. Ia bukan akaun guru berpusat dan tidak menyegerakkan data antara peranti.</p>
+</div>
+</section>
+<section class="card"><h2>ℹ️ Nota penggunaan</h2><p class="muted">Versi 3 menambah papan pemuka guru, penapisan rekod dan eksport CSV. Soalan masih merupakan bank demonstrasi dan perlu disemak dengan DSKP KSSR Matematik Tahun 2 sebelum penggunaan rasmi. Tiada akaun, pelayan atau pangkalan data awan disertakan.</p></section>
+</main><footer>Jom Kira! · Versi 4 · Prototaip dengan integrasi awan pilihan</footer>
+<script>
+const G=[
+{id:'bowling',name:'Bowling Matematik',e:'🎳',d:'Jawapan betul menjatuhkan pin bowling.',tag:'Sasaran'},
+{id:'race',name:'Lumba Kereta',e:'🏎️',d:'Kereta bergerak ke garisan penamat.',tag:'Kelajuan ilmu'},
+{id:'basket',name:'Bola Keranjang',e:'🏀',d:'Kutip peluang jaringan dengan jawapan tepat.',tag:'Jaringan'},
+{id:'frog',name:'Lompat Katak',e:'🐸',d:'Bantu katak melompat ke hadapan.',tag:'Lompatan'},
+{id:'treasure',name:'Pemburu Harta Karun',e:'💎',d:'Buka peti harta dengan menyelesaikan soalan.',tag:'Cari harta'},
+{id:'space',name:'Misi Angkasa',e:'🚀',d:'Bawa roket menuju planet seterusnya.',tag:'Misi'},
+{id:'fishing',name:'Memancing Nombor',e:'🎣',d:'Jawapan tepat membantu menangkap ikan.',tag:'Memancing'},
+{id:'shape',name:'Teka Bentuk',e:'🔷',d:'Kenali bentuk dan sifatnya.',tag:'Bentuk'},
+{id:'shop',name:'Kedai Bijak',e:'🛒',d:'Berlatih pengiraan wang dalam situasi kedai.',tag:'Wang'},
+{id:'dino',name:'Cabaran Dinosaur',e:'🦖',d:'Lepasi halangan dengan jawapan betul.',tag:'Cabaran'}];
+const TOP={campuran:'Campuran',nombor:'Nombor',tambah:'Tambah',tolak:'Tolak',darab:'Darab',bahagi:'Bahagi',pecahan:'Pecahan',wang:'Wang',masa:'Masa dan waktu',ukuran:'Ukuran',bentuk:'Bentuk dan ruang'};
+const $=x=>document.getElementById(x);let data=JSON.parse(localStorage.getItem('jkV3')||'{"score":0,"stars":0,"answered":0,"records":[]}'),game=null,qs=[],ix=0,points=0,correctCount=0,locked=false;
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function save(){localStorage.setItem('jkV3',JSON.stringify(data));stats();records();teacher()}
+function stats(){$('score').textContent=data.score;$('stars').textContent=data.stars+' ⭐';$('answered').textContent=data.answered;$('best').textContent=data.records.length?Math.max(...data.records.map(r=>r.points)):'—'}
+function records(){let a=[...data.records].reverse().slice(0,25);$('records').innerHTML=a.length?a.map(r=>`<div class="record"><span><b>${esc(r.player)}</b><br><span class="muted">${esc(r.game)} · ${esc(r.topic)} · ${esc(r.date)}</span></span><b>${r.points} mata · ${r.correct}/5</b></div>`).join(''):'<div class="empty">Belum ada rekod. Mulakan permainan untuk melihat pencapaian.</div>'}
+function games(){$('games').innerHTML=G.map(g=>`<button class="game" data-id="${g.id}"><span class="emoji">${g.e}</span><strong>${g.name}</strong><small>${g.d}</small><span class="tag">${g.tag}</span></button>`).join('');document.querySelectorAll('[data-id]').forEach(b=>b.onclick=()=>start(b.dataset.id))}
+function rand(n){return Math.floor(Math.random()*n)}
+function makeQ(){let t=$('topic').value;if(t==='campuran')t=['nombor','tambah','tolak','darab','bahagi','pecahan','wang','masa','ukuran','bentuk'][rand(10)];let hard=$('level').value==='sederhana',a,b,ans,text,opts=[],kind=t;
+if(t==='nombor'){a=rand(hard?900:100)+1;ans=String(String(a).length);text=`Nombor ${a} mempunyai berapa digit?`}
+else if(t==='tambah'){a=rand(hard?500:50)+1;b=rand(hard?500:50)+1;ans=String(a+b);text=`${a} + ${b} = ?`}
+else if(t==='tolak'){a=rand(hard?500:50)+20;b=rand(Math.min(a,hard?250:30));ans=String(a-b);text=`${a} − ${b} = ?`}
+else if(t==='darab'){a=rand(10)+2;b=rand(10)+2;ans=String(a*b);text=`${a} × ${b} = ?`}
+else if(t==='bahagi'){b=rand(9)+2;ans=String(rand(10)+1);a=b*Number(ans);text=`${a} ÷ ${b} = ?`}
+else if(t==='pecahan'){let d=[2,3,4,5,8][rand(5)];ans=`1/${d}`;text=`Satu daripada ${d} bahagian sama besar ditulis sebagai pecahan apa?`}
+else if(t==='wang'){a=rand(10)+1;b=rand(10)+1;ans='RM'+(a+b);text=`Amir ada RM${a}. Dia menerima RM${b} lagi. Jumlah wang Amir ialah…`}
+else if(t==='masa'){a=rand(12)+1;ans=(a===12?1:a+1)+':00';text=`Sekarang pukul ${a}:00. Sejam kemudian pukul berapa?`}
+else if(t==='ukuran'){a=rand(9)+1;ans=(a*100)+' cm';text=`${a} meter bersamaan berapa sentimeter?`}
+else{let p=[['Segi tiga','mempunyai 3 sisi'],['Segi empat sama','mempunyai 4 sisi sama panjang'],['Bulatan','tiada sisi lurus'],['Kubus','mempunyai 6 permukaan rata']][rand(4)];text=`Bentuk manakah yang ${p[1]}?`;ans=p[0]}
+opts.push(ans);let pool=t==='pecahan'?['1/2','1/3','1/4','1/5','1/8']:t==='bentuk'?['Segi tiga','Segi empat sama','Bulatan','Kubus']:t==='wang'?Array.from({length:12},(_,i)=>'RM'+(i+1)):t==='ukuran'?Array.from({length:10},(_,i)=>(i+1)*100+' cm'):t==='masa'?Array.from({length:12},(_,i)=>(i+1)+':00'):null;
+if(pool){for(let v of pool){if(opts.length<4&&!opts.includes(v))opts.push(v)}}
+else{let n=Number(ans);while(opts.length<4){let v=String(Math.max(0,n+(rand(9)-4)*(hard?5:1)));if(!opts.includes(v))opts.push(v)}}
+opts.sort(()=>Math.random()-.5);return{topic:t,text,ans,opts}}
+function start(id){game=G.find(g=>g.id===id);qs=Array.from({length:5},makeQ);ix=0;points=0;correctCount=0;locked=false;$('playCard').style.display='block';$('playTitle').textContent=game.e+' '+game.name;document.querySelectorAll('.game').forEach(b=>b.classList.toggle('active',b.dataset.id===id));showQ();$('playCard').scrollIntoView({behavior:'smooth',block:'start'})}
+function showQ(){locked=false;let q=qs[ix];$('qMeta').textContent=`${TOP[q.topic]} · SOALAN ${ix+1}/5`;$('qText').textContent=q.text;$('answers').innerHTML=q.opts.map(v=>`<button class="answer">${esc(v)}</button>`).join('');document.querySelectorAll('.answer').forEach(b=>b.onclick=()=>answer(b.textContent,b));$('feedback').textContent='Pilih jawapan yang betul untuk menggerakkan permainan.';$('feedback').className='feedback';$('next').classList.add('hidden');$('art').textContent=game.e;$('stageText').textContent='Permainan menunggu jawapan anda…';$('bar').style.width=(ix/5*100)+'%';$('roundInfo').textContent=`Mata pusingan: ${points} · Betul: ${correctCount}`}
+function win(){let art={bowling:'🎳 🔻 🔻 🔻',race:'🏎️💨🏁',basket:'🏀🧺✨',frog:'🐸🌿🌿',treasure:'🧰💎✨',space:'🚀🌟🪐',fishing:'🎣🐟💦',shape:'🔷🔺🟡',shop:'🛒🧾✅',dino:'🦖🦕🌴'};let txt={bowling:'Strike! Pin bowling tumbang!',race:'Kereta memecut ke hadapan!',basket:'Swish! Bola masuk ke jaring!',frog:'Katak melompat ke daun seterusnya!',treasure:'Peti harta terbuka!',space:'Roket bergerak ke planet seterusnya!',fishing:'Ikan berjaya dipancing!',shape:'Bentuk berjaya dikenal pasti!',shop:'Pengiraan wang tepat!',dino:'Dinosaur melepasi halangan!'};$('art').textContent=art[game.id];$('art').classList.remove('bounce');void $('art').offsetWidth;$('art').classList.add('bounce');$('stageText').textContent=txt[game.id]+' Kemajuan '+(ix+1)+'/5.'}
+function answer(v,btn){if(locked)return;locked=true;let q=qs[ix],ok=v===q.ans;document.querySelectorAll('.answer').forEach(b=>{b.disabled=true;if(b.textContent===q.ans)b.classList.add('correct')});if(!ok)btn.classList.add('wrong');if(ok){points+=10;correctCount++;data.score+=10;data.stars++;$('feedback').textContent='Betul! +10 mata dan satu bintang ⭐';$('feedback').className='feedback statusgood';win()}else{$('feedback').textContent='Belum tepat. Jawapan: '+q.ans+'. Cuba lagi pada soalan seterusnya.';$('feedback').className='feedback statusbad';$('art').textContent='💡';$('stageText').textContent='Teruskan berlatih — setiap soalan membantu anda belajar.'}data.answered++;save();$('roundInfo').textContent=`Mata pusingan: ${points} · Betul: ${correctCount}`;$('bar').style.width=((ix+1)/5*100)+'%';$('next').textContent=ix===4?'Lihat keputusan ✓':'Soalan seterusnya →';$('next').classList.remove('hidden')}
+function next(){if(ix<4){ix++;showQ()}else finish()}
+function finish(){let player=$('player').value.trim()||'Murid',topic=TOP[$('topic').value]||'Campuran';data.records.push({player,mode:$('mode').value,game:game.name,topic,points,correct:correctCount,date:new Date().toLocaleDateString('ms-MY')});save();$('qMeta').textContent='KEPUTUSAN';$('qText').textContent=`${correctCount}/5 jawapan betul`;$('answers').innerHTML='';$('feedback').textContent=`${player}, anda memperoleh ${points} mata daripada 5 soalan.`;$('feedback').className='feedback';$('art').textContent=correctCount>=4?'🏆🌟':'🌟👏';$('stageText').textContent=correctCount>=4?'Tahniah! Prestasi cemerlang!':'Syabas kerana mencuba. Cuba lagi untuk meningkatkan markah.';$('bar').style.width='100%';$('next').textContent='Main semula';$('next').onclick=()=>{ $('next').onclick=next;start(game.id)};$('next').classList.remove('hidden')}
+$('next').onclick=next;$('back').onclick=()=>{$('playCard').style.display='none';document.querySelectorAll('.game').forEach(b=>b.classList.remove('active'));window.scrollTo({top:0,behavior:'smooth'})};
+document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x===b));$('studentTab').classList.toggle('hidden',b.dataset.tab!=='student');$('teacherTab').classList.toggle('hidden',b.dataset.tab!=='teacher');if(b.dataset.tab==='teacher')teacher()});
+function filtered(){let name=$('filterName').value.trim().toLowerCase(),topic=$('filterTopic').value;return data.records.filter(r=>(!name||r.player.toLowerCase().includes(name))&&(!topic||r.topic===topic))}
+function teacher(){if(!$('teacherSummary'))return;let rs=filtered(),attempts=rs.length,total=rs.reduce((s,r)=>s+r.points,0),avg=attempts?Math.round(total/attempts):0,correct=rs.reduce((s,r)=>s+r.correct,0);$('teacherSummary').innerHTML=[['Rekod ditapis',attempts],['Jumlah mata',total],['Purata mata/sesi',avg],['Jawapan betul',correct]].map(x=>`<div class="stat"><strong>${x[1]}</strong><span>${x[0]}</span></div>`).join('');$('teacherTable').innerHTML=rs.length?`<table><thead><tr><th>Murid / kumpulan</th><th>Mod</th><th>Permainan</th><th>Topik</th><th>Mata</th><th>Betul / 5</th><th>Tarikh</th></tr></thead><tbody>${[...rs].reverse().map(r=>`<tr><td>${esc(r.player)}</td><td>${esc(r.mode)}</td><td>${esc(r.game)}</td><td>${esc(r.topic)}</td><td class="num">${r.points}</td><td class="num">${r.correct}/5</td><td>${esc(r.date)}</td></tr>`).join('')}</tbody></table>`:'<div class="empty">Tiada rekod sepadan dengan tapisan.</div>'}
+$('filterName').oninput=teacher;$('filterTopic').onchange=teacher;
+$('clear').onclick=()=>{if(confirm('Padam semua markah dan rekod yang disimpan pada peranti ini?')){data={score:0,stars:0,answered:0,records:[]};save()}};
+$('export').onclick=()=>{let rows=[['Nama','Mod','Permainan','Topik','Mata','Betul daripada 5','Tarikh'],...data.records.map(r=>[r.player,r.mode,r.game,r.topic,r.points,r.correct,r.date])],csv=rows.map(row=>row.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\r\n'),blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8;'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='rekod-jom-kira-v3.csv';a.click();URL.revokeObjectURL(url)};
+games();stats();records();teacher();
+let promptEvent;window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();promptEvent=e;$('installBtn').classList.remove('hidden')});$('installBtn').onclick=async()=>{if(promptEvent){promptEvent.prompt();await promptEvent.userChoice;promptEvent=null;$('installBtn').classList.add('hidden')}};
+if('serviceWorker'in navigator&&location.protocol.startsWith('http'))window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+(()=>{
+ const el=id=>document.getElementById(id); const CFG='jkV4_supabase_config';
+ let client=null, sessionUser=null, profileRole='student', syncing=false;
+ const say=(msg,good=false)=>{el('cloudStatus').textContent=msg;el('cloudStatus').className=good?'statusgood':'muted'};
+ function cfg(){try{return JSON.parse(localStorage.getItem(CFG)||'{}')}catch{return {}}}
+ function showAuth(){const on=!!sessionUser;el('syncCloud').classList.toggle('hidden',!on);el('signOut').classList.toggle('hidden',!on);el('signIn').classList.toggle('hidden',on);el('signUp').classList.toggle('hidden',on);el('accountInfo').textContent=on?(sessionUser.email+' · '+(profileRole==='teacher'?'Guru':'Murid')):'';}
+ async function configure(){const c=cfg();if(!c.url||!c.key){say('Masukkan URL dan anon key Supabase.');return false}if(!window.supabase){say('SDK awan tidak dapat dimuat. Semak sambungan internet.');return false}try{client=window.supabase.createClient(c.url,c.key);const {data,error}=await client.auth.getSession();if(error)throw error;sessionUser=data.session?.user||null;if(sessionUser)await loadProfile();showAuth();if(sessionUser){say('Akaun disambungkan',true);await pullCloud()}else say('Konfigurasi disimpan · belum log masuk');return true}catch(e){say('Sambungan gagal: '+e.message);return false}}
+ async function loadProfile(){if(!client||!sessionUser)return;const {data,error}=await client.from('profiles').select('role,display_name').eq('id',sessionUser.id).maybeSingle();if(!error&&data)profileRole=data.role||'student'}
+ function assignIds(){data.records.forEach(r=>{if(!r.client_id)r.client_id=(crypto.randomUUID?crypto.randomUUID():('jk-'+Date.now()+'-'+Math.random().toString(36).slice(2)))})}
+ async function pushCloud(){if(!client||!sessionUser||syncing)return;syncing=true;try{assignIds();const rows=data.records.filter(r=>!r._user_id||r._user_id===sessionUser.id).map(r=>({user_id:sessionUser.id,client_id:r.client_id,player:r.player,mode:r.mode,game:r.game,topic:r.topic,points:Number(r.points)||0,correct:Number(r.correct)||0,played_on:r.date||new Date().toLocaleDateString('ms-MY')}));if(rows.length){const {error}=await client.from('game_results').upsert(rows,{onConflict:'user_id,client_id'});if(error)throw error}say('Rekod berjaya disegerakkan ('+rows.length+')',true)}catch(e){say('Penyegerakan gagal: '+e.message)}finally{syncing=false}}
+ async function pullCloud(){if(!client||!sessionUser)return;try{let q=client.from('game_results').select('user_id,client_id,player,mode,game,topic,points,correct,played_on,created_at').order('created_at',{ascending:true}).limit(2000);if(profileRole!=='teacher')q=q.eq('user_id',sessionUser.id);const {data:rows,error}=await q;if(error)throw error;const known=new Set(data.records.map(r=>r.client_id).filter(Boolean));for(const r of (rows||[])){const existing=data.records.find(x=>x.client_id===r.client_id);if(existing){existing._user_id=r.user_id}else{data.records.push({client_id:r.client_id,_user_id:r.user_id,player:r.player,mode:r.mode,game:r.game,topic:r.topic,points:r.points,correct:r.correct,date:r.played_on||''});known.add(r.client_id)}}data.score=data.records.reduce((a,r)=>a+(Number(r.points)||0),0);data.stars=data.records.reduce((a,r)=>a+(Number(r.correct)||0),0);data.answered=Math.max(data.answered,data.records.reduce((a,r)=>a+5,0));localStorage.setItem('jkV3',JSON.stringify(data));stats();records();teacher();say('Awan dikemas kini · '+(rows||[]).length+' rekod',true)}catch(e){say('Tidak dapat membaca rekod awan: '+e.message)}}
+ el('sbUrl').value=cfg().url||'';el('sbKey').value=cfg().key||'';
+ el('saveCloudConfig').onclick=async()=>{const url=el('sbUrl').value.trim().replace(/\/$/,''),key=el('sbKey').value.trim();if(!url||!key){say('Isi URL dan anon/publishable key dahulu.');return}localStorage.setItem(CFG,JSON.stringify({url,key}));await configure()};
+ el('signUp').onclick=async()=>{if(!client&&!await configure())return;const email=el('authEmail').value.trim(),password=el('authPassword').value;if(!email||password.length<8){say('Masukkan e-mel sah dan kata laluan sekurang-kurangnya 8 aksara.');return}const {data:d,error}=await client.auth.signUp({email,password});if(error){say('Pendaftaran gagal: '+error.message);return}if(d.session){sessionUser=d.session.user;await loadProfile();showAuth();say('Akaun didaftarkan',true);await pullCloud()}else say('Semak e-mel untuk mengesahkan akaun, kemudian log masuk.',true)};
+ el('signIn').onclick=async()=>{if(!client&&!await configure())return;const email=el('authEmail').value.trim(),password=el('authPassword').value;const {data:d,error}=await client.auth.signInWithPassword({email,password});if(error){say('Log masuk gagal: '+error.message);return}sessionUser=d.user;await loadProfile();showAuth();say('Berjaya log masuk',true);await pullCloud()};
+ el('signOut').onclick=async()=>{if(client)await client.auth.signOut();sessionUser=null;profileRole='student';showAuth();say('Anda telah log keluar')};
+ el('syncCloud').onclick=async()=>{await pushCloud();await pullCloud()};
+ // Balut fungsi simpan sedia ada supaya markah baharu turut dihantar ke awan.
+ const oldSave=save; save=function(){oldSave();if(sessionUser)pushCloud()};
+ // Pastikan ID stabil bagi rekod tempatan sedia ada.
+ assignIds();localStorage.setItem('jkV3',JSON.stringify(data));
+ const c=cfg();if(c.url&&c.key)configure();else say('Belum disambungkan · konfigurasi awan pilihan');
+})();
+</script></body></html>
